@@ -1,3 +1,5 @@
+const resultElement = document.getElementById("result");
+
 // richiesta lunghezza del viaggio
 const tripLength = parseInt(
   prompt(
@@ -16,18 +18,18 @@ const ratePerKm = 0.21;
 console.log(ratePerKm + "€/km");
 
 if (userAge > 18 && userAge < 65) {
-  const ticketPrice = (tripLength * ratePerKm).toFixed(2);
-  console.log(ticketPrice);
-} else if (userAge < 18) {
+  ticketPrice = (tripLength * ratePerKm).toFixed(2);
+} else if (userAge <= 18) {
   const under18Discount = 20 / 100;
   console.log("lo sconto applicato sarà" + under18Discount);
 
-  const ticketPrice = (tripLength * ratePerKm * under18Discount).toFixed(2);
-  console.log(ticketPrice);
+  ticketPrice = (tripLength * ratePerKm * under18Discount).toFixed(2);
 } else {
   const over65Discount = 40 / 100;
   console.log("lo sconto applicato sarà" + over65Discount);
 
-  const ticketPrice = (tripLength * ratePerKm * over65Discount).toFixed(2);
-  console.log(ticketPrice);
+  ticketPrice = (tripLength * ratePerKm * over65Discount).toFixed(2);
 }
+
+console.log(ticketPrice);
+resultElement.innerText = "il tuo biglietto costerà" + " " + ticketPrice + "€";
